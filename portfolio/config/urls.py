@@ -23,3 +23,7 @@ urlpatterns = [
     path('blogs/',include('blogs.urls')),
     path('',include('mainpage.urls'))
 ]
+
+# print(static(settings.STATIC_URL,document_root=settings.STATIC_ROOT))
+urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

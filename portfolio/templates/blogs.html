@@ -4,9 +4,16 @@
 
 <h1>{{name}}</h1>
 <h2>{{surname}}</h2>
+{% for category in categories %}
+<h3>{{category.name}}</h3>
+{% endfor %}
 {% for blog in blogs %}
 <h3>{{blog.title}}</h3>
 <p>{{blog.description}}</p>
+<p>{{blog.ratings}}</p>
+<img src='{{blog.image.url}}' />
+<p>{{blog.image.url}}</p>
+<p>{{blog.category.name}}</p>
 {% endfor %}
 
 
