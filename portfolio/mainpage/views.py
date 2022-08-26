@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 def getPage(req):
-    return render(request=req,template_name='index.html')
+    if req.user.is_authenticated:
+        return render(request=req,template_name='index.html',context={'authenticated':True,})
+    else:
+        return redirect('/auth/login')

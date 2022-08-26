@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 
     # name of the created applications or features
     'mainpage',
-    'blogs'
+    'blogs',
+    'appauth'
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from .forms import BlogForm, Categoryform
 from .models import BlogModel,Category
@@ -17,18 +17,20 @@ def getBlogs(request):
     return render(request=request, template_name="blogs.html",context=context)
 
 def addBlog(request):
-    if request.method == 'POST':
-        form = Categoryform(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request=request, template_name="addblog.html",context={'form':'blog'})
-            # title = form.cleaned_data['title']
-    #         # print(title)
-    #     blog = Category(name=request.POST['title'])
-    #     blog.save()
-        print(form.errors)
-        return render(request=request, template_name="addblog.html",context={'form':'no valid'})
-    # form = BlogForm()
-    # # print(form)
-    form = Categoryform()
-    return render(request=request, template_name="addblog.html",context={'form':form})
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = Categoryform(request.POST)
+            if form.is_valid():
+                form.save()
+                return render(request=request, template_name="addblog.html",context={'form':'blog'})
+                # title = form.cleaned_data['title']
+        #         # print(title)
+        #     blog = Category(name=request.POST['title'])
+        #     blog.save()
+            print(form.errors)
+            return render(request=request, template_name="addblog.html",context={'form':'no valid'})
+        # form = BlogForm()
+        # # print(form)
+        form = Categoryform()
+        return render(request=request, template_name="addblog.html",context={'form':form})
+    return redirect('/auth/login')

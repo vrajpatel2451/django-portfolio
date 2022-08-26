@@ -6,6 +6,14 @@
         <link rel="stylesheet" type='text/css' href="{% static 'style.css' %}?{% now "U" %}" />
     </head>
     <body>
+        {% if authenticated %}
+        <a href='/auth/logout'><button>Logout</button></a>
+        {% comment %} <form action='' method='post'>
+            {% csrf_token %}
+            {{form}}
+            <button>Logout</button>
+        </form> {% endcomment %}
+        {% endif %}
         {% block content %}{% endblock content %}
     </body>
 </html>
