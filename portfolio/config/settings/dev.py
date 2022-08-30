@@ -16,6 +16,9 @@ DATABASES = {
     }
 }
 
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/',include('blogs.urls')),
     path('auth/',include('appauth.urls')),
+    path('api/',include('myApis.urls')),
     path('',include('mainpage.urls'))
 ]
 

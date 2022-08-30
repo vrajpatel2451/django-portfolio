@@ -23,3 +23,10 @@ class AppUser(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=20)
+class Book(models.Model):
+    title = models.CharField(max_length=40)
+    person = models.ForeignKey('Person',related_name='person',on_delete=models.CASCADE)
