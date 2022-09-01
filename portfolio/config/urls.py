@@ -23,6 +23,7 @@ urlpatterns = [
     path('blogs/',include('blogs.urls')),
     path('auth/',include('appauth.urls')),
     path('api/',include('myApis.urls')),
+    path('api/auth/',include('authApis.urls')),
     path('',include('mainpage.urls'))
 ]
 

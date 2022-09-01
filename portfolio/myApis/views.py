@@ -7,8 +7,9 @@ from .serialize import CategoriesSerilizer,BlogSerilizer,BookSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-from rest_framework import status
+from rest_framework import status,permissions
 from config.common_serilizer import seriliaze
+from knox.auth import TokenAuthentication
 
 # Create your views here.
 def getApi(request):
@@ -40,6 +41,8 @@ def getCategoriesApi(request):
 
 
 class BlogView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
     def get(self,request,*args,**kwrgs):
         blogs = BlogModel.objects.all()
         serilizedBlogs = BlogSerilizer(data=blogs.values(),many=True)
